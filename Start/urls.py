@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
     url(r'^accounts/logout/$', views.LogoutView.as_view(), name='logout', kwargs={'next_page': ''}),
+    path('administration/', include('administration.urls')),
     path('', include('Page.urls')),
 ]

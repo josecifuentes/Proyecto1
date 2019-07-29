@@ -99,10 +99,59 @@
                                 <a href="#" class="btn uza-btn">Get an appointment</a>
                             </div>
 
-                            <!-- Login / Register -->
+
+                        {% if user.is_authenticated %}
+                        <li class="main_nav_item">
+                        <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user"></span> 
+                                            <strong>{{ user.username }}</strong>
+                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-login">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <p class="text-center">
+                                                                <span class="glyphicon glyphicon-user icon-size"></span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <p class="text-left"><strong>{{ user.username }}</strong></p>
+                                                            <p class="text-left small">Administracion Colegio Nuevo Mundo</p>
+                                                            <p class="text-left">
+                                                                <a href="/administration" class="btn btn-primary btn-block btn-sm">Entrar Sistema</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <div class="navbar-login navbar-login-session">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <p>
+                                                                <a href="{% url 'logout' %}" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </ul>
+                            </li>
+                            {% else %}
+                                 <!-- Login / Register -->
                             <div class="login-register-btn mx-3">
                                 <a href="{% url 'login' %}">Login</a>
                             </div>
+                            {% endif %}
+                           
 
                             <!-- Search Icon -->
                             <div class="search-icon" data-toggle="modal" data-target="#searchModal">

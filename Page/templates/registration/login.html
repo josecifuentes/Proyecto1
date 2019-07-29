@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,15 +38,19 @@
 				<span class="login100-form-title p-b-41">
 					Login
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
-
+		
+                   
+				<form class="login100-form validate-form p-b-33 p-t-5" method="post" action="{% url 'login' %}">
+					{% csrf_token %}
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="User name">
+						
+						{{ form.username|add_class:"input100"|attr:"placeholder:Your User name" }}
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						{{ form.password|add_class:"input100"|attr:"placeholder:Your Password" }}
+						
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 
@@ -56,7 +61,12 @@
 					</div>
 
 				</form>
-
+{% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> Tu Usuario y/o Contraseña No Son Las Correctas, Por favor Intentalo De Nuevo.
+    </div>
+    {% endif %}
 				 <div class="text-center p-t-136">
                         <a class="txt2" href="..\..\">
                             Back
