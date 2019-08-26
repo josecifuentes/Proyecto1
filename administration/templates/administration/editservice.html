@@ -1,0 +1,114 @@
+{% extends 'administration/base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'administration/multi/css/bootstrap-select.css' %}">
+  
+
+
+
+<div class="jumbotron">
+  <center><h1>Edit service</h1>
+    <p class="mb-4">You can edit the service</p></center>
+
+
+
+</div>
+
+
+
+
+<div class="container">
+            
+<div class="row" >
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10">
+ 
+ <form method="POST" class="post-form" style="color: rgb(133, 135, 150); background: rgb(234, 236, 244  );">
+
+    {% csrf_token %}
+     {% for non_field_error in form1.non_field.errors %}
+    <help class="is-danger">{{ non_field_error}}</help>
+     {% endfor %} 
+      <div class="form-group row">
+
+    <label class="col-sm-2 col-form-label"><i class="fa fa-address-book"></i> Order</label>
+    <div class="col-sm-4">
+     
+    <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="{{Services.Order.pk}}" readonly="false" style="text-align: center;">
+                   
+    </div>
+    <label class="col-sm-2 col-form-label"><i class="fa fa-address-book"></i> Names</label>
+    <div class="col-sm-4">
+     
+    <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="{{Services.Order.Names}} {{Services.Order.Last_names}}" readonly="false" style="text-align: center;">
+                   
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><i class="fa fa-address-book"></i> Service</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="{{Services.Type}}" readonly="false" style="text-align: center;">
+      </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><i class="fa fa-mobile"></i> Description</label>
+    <div class="col-sm-10">
+      {{form1.Description}}
+    </div>
+  </div>  
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><i class="fa fa-book"></i> Note</label>
+    <div class="col-sm-10">
+      {{form1.Note}}
+    </div>
+  </div>
+   <center>
+      <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Edit service</button>
+      </center>
+</form>
+
+  </div>  
+</div>
+
+</div>
+
+
+  
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="{% static 'administration/multi/js/bootstrap-select.js' %}"></script>
+
+<script>
+function createOptions(number) {
+  var options = [], _options;
+
+ {% for type in types %}
+    {%if type.op == '1' %}
+    var option = '<option selected value="' + "{{type.Name}}" + '">' + "{{type.Name}}" + '</option>';
+    options.push(option);
+    {%else%}
+    var option = '<option value="' + "{{type.Name}}" + '">' + "{{type.Name}}" + '</option>';
+    options.push(option);
+    {% endif %}
+  {%endfor%}
+
+  _options = options.join('');
+  
+
+  $('#number-multiple')[0].innerHTML = _options;
+}
+
+var mySelect = $('#first-disabled2');
+
+createOptions(4);
+
+</script>
+
+{% endblock %}

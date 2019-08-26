@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from django.utils import timezone
 
 class Order(models.Model):
     Names  =   models.CharField(max_length=70)
@@ -18,8 +19,8 @@ class Order(models.Model):
 	    choices=states,
 	    default='check',
 	    )
-    Description =  models.CharField(max_length=200)
-    Note =  models.CharField(max_length=200)
+    Description =  models.CharField(max_length=200,blank=True, null=True)
+    Note =  models.CharField(max_length=200,blank=True, null=True)
     Create = models.DateTimeField(blank=True, null=True)
     def publish(self):
     	self.Create = timezone.now()
@@ -47,7 +48,7 @@ class Service(models.Model):
 		self.Create = timezone.now()
 		self.save()
 	def __str__(self):
-		return '%s %s %s' % (self.Order, self.Type)
+		return '%s %s' % (self.Order, self.Type)
 
 class Job(models.Model):
 	Service = models.ForeignKey(Service, on_delete=models.CASCADE)
@@ -59,7 +60,7 @@ class Job(models.Model):
 		self.Create = timezone.now()
 		self.save()
 	def __str__(self):
-		return '%s %s %s' % (self.Service, self.End_date)
+		return '%s %s' % (self.Service, self.End_date)
 
 class Profile(models.Model):
 	Names  =   models.CharField(max_length=70)
@@ -85,9 +86,9 @@ class Profile(models.Model):
 		self.Create = timezone.now()
 		self.save()
 	def __str__(self):
-		return '%s %s %s' % (self.Service, self.End_date)
+		return '%s %s' % (self.Names, self.Last_names)
 
-class Assign(object):
+class Assign(models.Model):
 	Job = models.ForeignKey(Job, on_delete=models.CASCADE)
 	Profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	Create = models.DateTimeField(blank=True, null=True)
@@ -105,4 +106,4 @@ class Assign(object):
 		self.Create = timezone.now()
 		self.save()
 	def __str__(self):
-		return '%s %s %s' % (self.Job, self.Profile)
+		return '%s %s' % (self.Job, self.Profile)
