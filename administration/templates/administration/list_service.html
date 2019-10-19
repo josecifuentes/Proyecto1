@@ -6,6 +6,28 @@
   <link href="{% static 'administration/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'administration/notify/dist/css/Lobibox.min.css' %}"/>
 
+<script type="text/javascript">
+    window.onload = function() {
+    {% if mensajes %}
+        Lobibox.notify('success', {
+                    showClass: 'rollIn',
+                    hideClass: 'rollOut',
+                    msg: '{{mensajes}}'
+                });     
+
+     {% endif %}
+    {% if errores %}
+    Lobibox.notify('error', {
+                    showClass: 'zoomInUp',
+                    hideClass: 'zoomOutDown',
+                    delay: 15000,
+                    msg: '{{errores}}'
+                });
+    {% endif %}
+    
+};
+</script>
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -63,8 +85,8 @@
                       <td>
                         {% if Service.Description|length > 2 %}
                         <center>
-                          <a type="button" class="btn btn-warning" href="{% url 'editservice' pk=Service.pk %}">Edit</a>
-                          <button type="button" class="btn btn-danger">Delete</button>
+                          <a class="btn btn-warning"  data-toggle="modal" data-target="#editmodal{{ forloop.counter }}"><font color="white">Edit</font></a>
+                          <a class="btn btn-danger" data-toggle="modal" data-target="#deletemodal{{ forloop.counter }}"><font color="white">Delete</font></a>
                         </center>
                       {% else %}
                       <center>
@@ -75,6 +97,59 @@
 
                       </td>
                     </tr>
+
+
+
+<!-- edit modal-->
+            <div class="modal fade" id="editmodal{{ forloop.counter }}" role="dialog">
+              <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Service No.{{Service.pk}}</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+                  <div class="modal-body">
+                    <p>Are you sure to edit service <font color="Red">{{Service.Type }}  No.{{Service.pk}}</font> for the client <font color="Green"> {{Service.Order}}?</font></p>
+                  </div>
+                  <div class="modal-footer">
+
+                  <a href="{% url 'editservice' pk=Service.pk %}" class="btn btn-primary">Edit</a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                
+              </div>
+            </div>
+
+
+
+<!-- delete modal-->
+            <div class="modal fade" id="deletemodal{{ forloop.counter }}" role="dialog">
+              <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Service No.{{Service.pk}}</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+                  <div class="modal-body">
+                    <p>Are you sure to delete service <font color="Red">{{Service.Type }}  No.{{Service.pk}}</font> for the client <font color="Green"> {{Service.Order}}?</font></p>
+                  </div>
+                  <div class="modal-footer">
+
+                  <a href="{% url 'deleteservice' pk=Service.pk %}" class="btn btn-primary">Delete</a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                
+              </div>
+            </div>
+
+
+
                     {% endfor %}
 
                   </tbody>
@@ -96,5 +171,6 @@
 
   <!-- Page level custom scripts -->
   <script src="{% static 'administration/js/demo/datatables-demo.js' %}"></script>
+  <script src="{% static 'administration/notify/dist/js/Lobibox.min.js' %}"></script>
   
 {% endblock %}

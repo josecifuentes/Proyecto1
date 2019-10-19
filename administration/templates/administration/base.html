@@ -1,414 +1,1437 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Katarina Enterprices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
- <link rel="icon" href="{% static 'home/img/core-img/favicon.ico' %}">
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
 
-  <title>Katarina Enterprises-Administration</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="{% static 'administration/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="{% static 'administration/css/sb-admin-2.css' %}" rel="stylesheet">
-  <link href="{% static 'administration/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'administration/assets/css/base.min.css' %}">
+<script src="{% static 'administration/assets/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'administration/assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'administration/assets/js/metismenu.js' %}"></script>
+<script src="{% static 'administration/assets/js/scripts-init/app.js' %}"></script>
 </head>
-
-<body id="page-top">
-
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <img src="{% static 'administration/img/katarina.png' %}" class="log">
-        </div>
-        <div class="sidebar-brand-text mx-3">Katarina Enterprises</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'dashboard'%}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Service Order
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-archive"></i>
-          <span>Orders</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">List of orders:</h6>
-            <a class="collapse-item" href="{% url 'neworder'%}">Create New Order</a>
-            <a class="collapse-item" href="{% url 'listorder'%}">List Order</a>
-            <a class="collapse-item" href="{% url 'pendingorders'%}">Check orders</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-toolbox"></i>
-          <span>Services</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Services:</h6>
-            <a class="collapse-item" href="{% url 'listservice'%}">List of Services</a>
-            <a class="collapse-item" href="{% url 'listservices'%}">Order Services</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Jobs & Assigment
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-hammer"></i>
-          <span>Job</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Jobs:</h6>
-            <a class="collapse-item" href="#">Create new Job</a>
-            <a class="collapse-item" href="#">List Of Jobs</a>
-            <a class="collapse-item" href="#">Edit/delete Jobs</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Stats:</h6>
-            <a class="collapse-item" href="#">Check Job Status</a>
-            <a class="collapse-item" href="#">Job's Notes</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapservices" aria-expanded="true" aria-controls="collapservices">
-          <i class="fas fa-file-signature"></i>
-          <span>Asigment</span>
-        </a>
-        <div id="collapservices" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Asign:</h6>
-            <a class="collapse-item" href="#">Asign Job</a>
-            <a class="collapse-item" href="#">List of asign</a>
-            <a class="collapse-item" href="#">Edit/delete Asing</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Stats:</h6>
-            <a class="collapse-item" href="#">Check Asign Status</a>
-            <a class="collapse-item" href="#">View asign info</a>
-            <a class="collapse-item" href="#">View asign bill</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConfig" aria-expanded="true" aria-controls="collapseConfig">
-          <i class="fas fa-tools"></i>
-          <span>Config</span>
-        </a>
-        <div id="collapseConfig" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Configutarion:</h6>
-            <a class="collapse-item" href="#">Create Sliders</a>
-            <a class="collapse-item" href="#">List of Sliders (edit/delete)</a>
-            <a class="collapse-item" href="#">Page configuration</a>
-            <h6 class="collapse-header">Users:</h6>
-            <a class="collapse-item" href="#">Create new employee</a>
-            <a class="collapse-item" href="#">Edit/delete Users</a>
-            <a class="collapse-item" href="#">User stats</a>
-          </div>
-        </div>
-      </li>
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
-   <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
- <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+<body>
+<div class="app-container app-theme-gray body-tabs-shadow fixed-header fixed-sidebar">
+    <!--Header START-->
+    <div class="app-header header-shadow bg-danger header-text-light">
+        <div class="app-header__logo">
+            <div class="logo-src"></div>
+            <div class="header__pane ml-auto">
+                <div>
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
             </div>
-          </form>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
+        </div>
+        <div class="app-header__mobile-menu">
+            <div>
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="app-header__menu">
+            <span>
+                <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                    <span class="btn-icon-wrapper">
+                        <i class="fa fa-ellipsis-v fa-w-6"></i>
+                    </span>
+                </button>
+            </span>
+        </div>    <div class="app-header__content">
+            <div class="app-header-left">
+                <div class="search-wrapper">
+                    <div class="input-holder">
+                        <input type="text" class="search-input" placeholder="Type to search">
+                        <button class="search-icon"><span></span></button>
                     </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">0+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
+                    <button class="close"></button>
+                </div>
+                <ul class="header-megamenu nav">
+                    <li class="nav-item">
+                        <a href="javascript:void(0);" data-placement="bottom" rel="popover-focus" data-offset="300" data-toggle="popover-custom" class="nav-link">
+                            <span class="badge badge-pill badge-warning ml-0 mr-2">0</span>
+                            <i class="nav-link-icon pe-7s-menu"> </i>
+                            Summary
+                            <i class="fa fa-angle-down ml-2 opacity-5"></i>
+                        </a>
+                        <div class="rm-max-width">
+                            <div class="d-none popover-custom-content">
+                                <div class="dropdown-mega-menu">
+                                    <div class="grid-menu grid-menu-3col">
+                                        <div class="no-gutters row">
+                                            <div class="col-sm-6 col-xl-4">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-header nav-item">
+                                                        Overview
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="{% url 'neworder' %}" class="nav-link">
+                                                            <i class="nav-link-icon lnr-inbox">
+                                                            </i>
+                                                            <span>
+                                                                Work in processes
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">
+                                                            <i class="nav-link-icon lnr-book">
+                                                            </i>
+                                                            <span>
+                                                                Pending orders
+                                                            </span>
+                                                            <div class="ml-auto badge badge-pill badge-danger">0
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">
+                                                            <i class="nav-link-icon lnr-location">
+                                                            </i>
+                                                            <span>
+                                                                Check Routes
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a disabled="" href="javascript:void(0);" class="nav-link">
+                                                            <i class="nav-link-icon lnr-chart-bars">
+                                                            </i>
+                                                            <span>
+                                                                Employee Statistics
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-4">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-header nav-item">
+                                                        Quick Start
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">
+                                                           Asign Route
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">
+                                                            Notes
+                                                            <div class="ml-auto badge badge-success">0</div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Employees</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">New Task</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-4">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-header nav-item">WORKS &amp; ASSIGMENT
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link"> Work Reports
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Work's Notes
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">New Work's
+                                                            <div class="ml-auto badge badge-warning">0
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Work status
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="btn-group nav-item">
+                        <a  class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                            
+                            Calendar
+                            <i class="fa fa-angle-down ml-2 opacity-5"></i>
+                        </a>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu">
+                            <div class="dropdown-menu-header">
+                                <div class="dropdown-menu-header-inner bg-secondary">
+                                    <div class="menu-header-image opacity-5" style="background-image: url('{% static 'administration/assets/images/dropdown-header/abstract2.jpg' %}');"></div>
+                                    <div class="menu-header-content">
+                                        <h5 class="menu-header-title">Calendar</h5>
+                                        <h6 class="menu-header-subtitle">Check all of your task</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scroll-area-xs">
+                                <div class="scrollbar-container">
+                                    <h6 tabindex="-1" class="dropdown-header">Tasks of the month</h6>
+                                    <button type="button" tabindex="0" class="dropdown-item">Check Calendar</button>
+                                    <button type="button" tabindex="0" class="dropdown-item">Add calendar events</button>
+                                    <button type="button" tabindex="0" class="dropdown-item">Check Employee Calendar</button>
+                                    <div tabindex="-1" class="dropdown-divider"></div>
+                                    <button type="button" tabindex="0" class="dropdown-item">Works</button>
+                                    <button type="button" tabindex="0" class="dropdown-item">Log Entries</button>
+                                </div>
+                            </div>
+                            <ul class="nav flex-column">
+                                <li class="nav-item-divider nav-item"></li>
+                                <li class="nav-item-btn nav-item">
+                                    <center><button class="btn-wide btn-shadow btn btn-danger btn-sm">Manage Calendar</button></center>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a aria-haspopup="true"  data-toggle="dropdown" class="nav-link" aria-expanded="false">
+                            <i class="nav-link-icon pe-7s-settings"></i>
+                            Settings
+                            <i class="fa fa-angle-down ml-2 opacity-5"></i>
+                        </a>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-rounded dropdown-menu-lg rm-pointers dropdown-menu">
+                            <div class="dropdown-menu-header">
+                                <div class="dropdown-menu-header-inner bg-success">
+                                    <div class="menu-header-image opacity-1" style="background-image: url('{% static 'administration/assets/images/dropdown-header/abstract3.jpg' %}');"></div>
+                                    <div class="menu-header-content text-left">
+                                        <h5 class="menu-header-title">Employee Settings</h5>
+                                        <h6 class="menu-header-subtitle">Check options of employees</h6>
+                                        <div class="menu-header-btn-pane">
+                                            <button class="mr-2 btn btn-dark btn-sm">Short Settings</button>
+                                            <button class="btn-icon btn-icon-only btn btn-warning btn-sm">
+                                                <i class="pe-7s-config btn-icon-wrapper"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" tabindex="0" class="dropdown-item"><i class="dropdown-icon lnr-hand icon-gradient bg-love-kiss"> </i>Manage permissions</button>
+                            <button type="button" tabindex="0" class="dropdown-item"><i class="dropdown-icon lnr-hourglass icon-gradient bg-love-kiss"> </i>Work time</button>
+                            <button type="button" tabindex="0" class="dropdown-item"><i class="dropdown-icon lnr-apartment icon-gradient bg-love-kiss"> </i>Asign Work's</button>
+                            <div tabindex="-1" class="dropdown-divider"></div>
+                            <button type="button" tabindex="0" class="dropdown-item"><i class="dropdown-icon lnr-chart-bars icon-gradient bg-love-kiss"> </i>Work Summary</button>
+                           
+                        </div>
+                    </li>
+                </ul>        </div>
+            <div class="app-header-right">
+                <div class="header-dots">
+                    <div class="dropdown">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="p-0 mr-2 btn btn-link">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-primary"></span>
+                                <i class="icon text-primary ion-android-apps"></i>
+                            </span>
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu-header">
+                                <div class="dropdown-menu-header-inner bg-plum-plate">
+                                    <div class="menu-header-image" style="background-image: url('../assets/images/dropdown-header/abstract4.jpg');"></div>
+                                    <div class="menu-header-content text-white">
+                                        <h5 class="menu-header-title">Report dashboard</h5>
+                                        <h6 class="menu-header-subtitle">Check reports of importan things</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-menu grid-menu-xl grid-menu-3col">
+                                <div class="no-gutters row">
+                                    <div class="col-sm-6 col-xl-4">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                            <i class="pe-7s-paint icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"></i>
+                                            Works
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6 col-xl-4">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                            <i class="pe-7s-piggy icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i>
+                                            Reports
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6 col-xl-4">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                            <i class="pe-7s-config icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i>
+                                            Settings
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6 col-xl-4">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                            <i class="pe-7s-browser icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i>
+                                            Orders
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6 col-xl-4">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                            <i class="pe-7s-hourglass icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i>
+                                            Employees Activity
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6 col-xl-4">
+                                        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                            <i class="pe-7s-map icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i>
+                                            Routes reports
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav flex-column">
+                                <li class="nav-item-divider nav-item"></li>
+                                <li class="nav-item-btn text-center nav-item">
+                                    <button class="btn-shadow btn btn-primary btn-sm">Check all</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
+                    <div class="dropdown">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="p-0 mr-2 btn btn-link">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-danger"></span>
+                                <i class="icon text-danger icon-anim-pulse ion-android-notifications"></i>
+                                <span class="badge badge-dot badge-dot-sm badge-danger">Notifications</span>
+                            </span>
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu-header mb-0">
+                                <div class="dropdown-menu-header-inner bg-deep-blue">
+                                    <div class="menu-header-image opacity-1" style="background-image: url('../assets/images/dropdown-header/city3.jpg');"></div>
+                                    <div class="menu-header-content text-dark">
+                                        <h5 class="menu-header-title">Notifications</h5>
+                                        <h6 class="menu-header-subtitle">You have <b>0</b> unread messages</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="tabs-animated-shadow tabs-animated nav nav-justified tabs-shadow-bordered p-3">
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link active" data-toggle="tab" href="#tab-messages-header">
+                                        <span>Messages</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link" data-toggle="tab" href="#tab-events-header">
+                                        <span>Events</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a role="tab" class="nav-link" data-toggle="tab" href="#tab-errors-header">
+                                        <span>Working notes</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab-messages-header" role="tabpanel">
+                                    <div class="scroll-area-sm">
+                                        <div class="scrollbar-container">
+                                            <div class="p-3">
+                                                <div class="notifications-box">
+                                                    <div class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--one-column">
+                                                        <div class="vertical-timeline-item dot-danger vertical-timeline-element">
+                                                            <div><span class="vertical-timeline-element-icon bounce-in"></span>
+                                                                <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4><span class="vertical-timeline-element-date"></span></div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-events-header" role="tabpanel">
+                                    <div class="scroll-area-sm">
+                                        <div class="scrollbar-container">
+                                            <div class="p-3">
+                                                <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                                                    <div class="vertical-timeline-item vertical-timeline-element">
+                                                        <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-success"> </i></span>
+                                                            <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4>
+                                                                <p>Lorem ipsum dolor sic amet, today at <a href="javascript:void(0);">12:00 PM</a></p><span class="vertical-timeline-element-date"></span></div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-errors-header" role="tabpanel">
+                                    <div class="scroll-area-sm">
+                                        <div class="scrollbar-container">
+                                            <div class="no-results pt-3 pb-0">
+                                                <div class="swal2-icon swal2-success swal2-animate-success-icon">
+                                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                    <span class="swal2-success-line-tip"></span>
+                                                    <span class="swal2-success-line-long"></span>
+                                                    <div class="swal2-success-ring"></div>
+                                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                                </div>
+                                                <div class="results-subtitle">All in order!!</div>
+                                                <div class="results-title">There are no working notes!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav flex-column">
+                                <li class="nav-item-divider nav-item"></li>
+                                <li class="nav-item-btn text-center nav-item">
+                                    <button class="btn-shadow btn-wide btn-pill btn btn-focus btn-sm">View Latest Changes</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    
+                    <div class="dropdown">
+                        <button type="button" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false" class="p-0 btn btn-link dd-chart-btn">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-success"></span>
+                                <i class="icon text-success ion-android-map"></i>
+                            </span>
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu-header">
+                                <div class="dropdown-menu-header-inner bg-premium-dark">
+                                    <div class="menu-header-image" style="background-image: url('{% static 'administration/assets/images/dropdown-header/abstract4.jpg' %}');"></div>
+                                    <div class="menu-header-content text-white">
+                                        <h5 class="menu-header-title">work in progress
+                                        </h5>
+                                        <h6 class="menu-header-subtitle">Recent Work Activity Overview
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-chart">
+                                <div class="widget-chart-content">
+                                    <div class="icon-wrapper rounded-circle">
+                                        <div class="icon-wrapper-bg opacity-9 bg-focus">
+                                        </div>
+                                        <i class="lnr-users text-white">
+                                        </i>
+                                    </div>
+                                    <div class="widget-numbers">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="widget-subheading pt-2">
+                                        Works to do today
+                                    </div>
+                                    <div class="widget-description text-danger">
+                                        <span class="pr-1">
+                                            <span>Orders checks 0</span>
+                                        </span>
+                                        <i class="fa fa-arrow-left"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-chart-wrapper">
+                                    <div id="dashboard-sparkline-carousel-3-pop"></div>
+                                </div>
+                            </div>
+                            <ul class="nav flex-column">
+                                <li class="nav-item-divider mt-0 nav-item">
+                                </li>
+                                <li class="nav-item-btn text-center nav-item">
+                                    <button class="btn-shine btn-wide btn-pill btn btn-warning btn-sm">
+                                        <i class="fa fa-cog fa-spin mr-2">
+                                        </i>
+                                        View Details
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
+                </div>
+                
+                <div class="header-btn-lg pr-0">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="widget-content-left">
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                        <img width="42" class="rounded-circle" src="{% static 'administration/assets/images/avatars/1.jpg' %}" alt="">
+                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu-header">
+                                            <div class="dropdown-menu-header-inner bg-info">
+                                                <div class="menu-header-image opacity-2" style="background-image: url('{% static 'administration/assets/images/dropdown-header/city3.jpg' %}');"></div>
+                                                <div class="menu-header-content text-left">
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <img width="42" class="rounded-circle"
+                                                                     src="{% static 'administration/assets/images/avatars/1.jpg' %}"
+                                                                     alt="">
+                                                            </div>
+                                                            <div class="widget-content-left">
+                                                                <div class="widget-heading">Alina Mcloughlin
+                                                                </div>
+                                                                <div class="widget-subheading opacity-8">Profile User
+                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-right mr-2">
+                                                                <button class="btn-pill btn-shadow btn-shine btn btn-focus">Logout
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="scroll-area-xs" style="height: 150px;">
+                                            <div class="scrollbar-container ps">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-header nav-item">Activity
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Chat
+                                                            <div class="ml-auto badge badge-pill badge-info">0
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Change Password
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item-header nav-item">My Account
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Settings
+                                                            
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Messages
+                                                            <div class="ml-auto badge badge-warning">0
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="javascript:void(0);" class="nav-link">Log activity
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item-divider mb-0 nav-item"></li>
+                                        </ul>
+                                        <div class="grid-menu grid-menu-2col">
+                                            <div class="no-gutters row">
+                                                <div class="col-sm-6">
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
+                                                        <i class="pe-7s-chat icon-gradient bg-amy-crisp btn-icon-wrapper mb-2"></i>
+                                                        Message Inbox
+                                                    </button>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
+                                                        <i class="pe-7s-ticket icon-gradient bg-love-kiss btn-icon-wrapper mb-2"></i>
+                                                        <b>Work Activity</b>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item-divider nav-item">
+                                            </li>
+                                            <li class="nav-item-btn text-center nav-item">
+                                                <button class="btn-wide btn btn-primary btn-sm">
+                                                    View Profile
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content-left  ml-3 header-user-info">
+                                <div class="widget-heading">
+                                    Alina Mclourd
+                                </div>
+                                <div class="widget-subheading">
+                                   Administrator
+                                </div>
+                            </div>
+                            <div class="widget-content-right header-user-info ml-3">
+                                <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-btn-lg">
+                    <button type="button" class="hamburger hamburger--elastic open-right-drawer">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>        </div>
+        </div>
+    </div>    <!--Header END-->
+   
+    <div class="app-main">
+            <div class="app-sidebar sidebar-shadow bg-light sidebar-text-dark">
+                <div class="app-header__logo">
+                    <div class="logo-src"></div>
+                    <div class="header__pane ml-auto">
+                        <div>
+                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__mobile-menu">
+                    <div>
+                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-header__menu">
+                    <span>
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </span>
+                </div>    <div class="scrollbar-sidebar">
+                    <div class="app-sidebar__inner">
+                        <ul class="vertical-nav-menu">
+                            <li class="app-sidebar__heading">Menu</li>
+                            <li
+                                
+                                
+                                {% if pos == "dashboard" %} class="mm-active" {% endif%}
+                                 
+                                
+                                
+                            >
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-home "></i>
+                                    Home
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                    <ul {% if pos == "dashboard" %} class="mm-show" {% endif%}>
+                                    <li>
+        <a href="{% url 'dashboard' %}" {% if pos == "dashboard" %}
+                                        class="mm-active"
+                                        {% endif%}
+                                        >
+                                            <i class="metismenu-icon">
+                                            </i>
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                  
+                                   
+                                </ul>
+                            </li>
+                            
+                            <li class="app-sidebar__heading">Service Order</li>
+                            <li {% if pos == "cnorder" or pos == "lorder"%} class="mm-active" {% endif%}
+                                 >
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-box2"></i>
+                                    Orders
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul {% if pos == "cnorder" or pos == "lorder" %} class="mm-show" {% endif%}>
+                                    <li
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    >
+                                        <a href="{% url 'neworder' %}" {% if pos == "cnorder" %}
+                                        class="mm-active"
+                                        {% endif%}>
+                                            <i class="metismenu-icon">
+                                            </i>Create new order
+                                        </a>
+                                       
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'listorder' %}" {% if pos == "lorder" %}
+                                        class="mm-active"
+                                        {% endif%}>
+                                            <i class="metismenu-icon">
+                                            </i>List Order
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>Check orders
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            >
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-ribbon"></i>
+                                    Services
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>List of Services
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>Order Services
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li
+                                
+                                
+                                
+                            >
+                               
+                            </li>
+                            <li class="app-sidebar__heading">Works & Assigment</li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon lnr-pencil">
+                                    </i>Asign new Work
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon lnr-book">
+                                    </i>List Of Work
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon lnr-map">
+                                    </i>Create Route
+                                </a>
+                            </li>
+                            
 
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">0</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="{% static 'administration/img/av1.png' %}" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="{% static 'administration/img/av1.png' %}" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="{% static 'administration/img/av1.png' %}" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="{% static 'administration/img/av1.png' %}" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
+                            
+                            <li class="app-sidebar__heading">Employees</li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon lnr-user">
+                                    </i>Create New Employee
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon lnr-users">
+                                    </i>List of Employee
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon lnr-map-marker">
+                                    </i>Assign Route
+                                </a>
+                            </li>
+                            <li class="app-sidebar__heading">Stats</li>
+                            <li>
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-target"></i>
+                                    Work Status
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>Work's Notes
+                                        </a>
+                                    </li>
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>View complete Work
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                </li>
+                                <li>
+                            <a href="#">
+                                    <i class="metismenu-icon pe-7s-help2"></i>
+                                    Employee Status
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul> <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>Check Employee Status
+                                        </a>
+                                    </li>
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Employee Last Name</span>
-                <img class="img-profile rounded-circle" src="{% static 'administration/img/av1.png' %}">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </nav>
-        <!-- End of Topbar -->
+                                    <li>
+                                        <a href="#">
+                                            <i class="metismenu-icon">
+                                            </i>View Work employee
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                    
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>    
 
 
-                {% block content %}
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                    
+<div class="app-page-title">
+                        <nav class="" aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a>
+                                                        <i aria-hidden="true" class="fa fa-home"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    <a>Tableros</a>
+                                                </li>
+                                                <li class="active breadcrumb-item" aria-current="page">
+                                                    Tablero Administrador
+                                                </li>
+                                            </ol>
+                                        </nav>
+                        <div class="page-title-wrapper">
+
+                        <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                            <i class="{{icon}}"></i>
+                                        </div>
+                                        <div>{{title}}
+                                            <div class="page-title-subheading">{{text}}</div>
+                                        </div>
+                            
+                            </div>
+                             <div class="page-title-actions">
+                                <button type="button" data-toggle="tooltip" title="Take a tour" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark start-tour">
+                                    <i class="fa fa-star"></i>
+                                </button>
+                                <div class="d-inline-block dropdown">
+                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                                            <i class="fa fa-business-time fa-w-20"></i>
+                                        </span>
+                                        Buttons
+                                    </button>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link">
+                                                    <i class="nav-link-icon lnr-inbox"></i>
+                                                    <span>
+                                                        Inbox
+                                                    </span>
+                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link">
+                                                    <i class="nav-link-icon lnr-book"></i>
+                                                    <span>
+                                                        Book
+                                                    </span>
+                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link">
+                                                    <i class="nav-link-icon lnr-picture"></i>
+                                                    <span>
+                                                        Picture
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a disabled class="nav-link disabled">
+                                                    <i class="nav-link-icon lnr-file-empty"></i>
+                                                    <span>
+                                                        File Disabled
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> 
+
+                     </div>
+
+                    </div>    
+                 
+            
+
+                    {% block content %}
                     {% endblock %}
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy;Katarina Enterprises 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
+                       
+                </div>
+                <div class="app-wrapper-footer">
+                    <div class="app-footer">
+                        <div class="app-footer__inner">
+                            <div class="app-footer-left">
+                                <div class="footer-dots">
+                                    <div class="dropdown">
+                                        <a aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="dot-btn-wrapper">
+                                            <i class="dot-btn-icon lnr-bullhorn icon-gradient bg-mean-fruit"></i>
+                                            <div class="badge badge-dot badge-abs badge-dot-sm badge-danger">Notifications</div>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu">
+                                            <div class="dropdown-menu-header mb-0">
+                                                <div class="dropdown-menu-header-inner bg-deep-blue">
+                                                    <div class="menu-header-image opacity-1" style="background-image: url('../assets/images/dropdown-header/city3.jpg');"></div>
+                                                    <div class="menu-header-content text-dark">
+                                                        <h5 class="menu-header-title">Notifications</h5>
+                                                        <h6 class="menu-header-subtitle">You have <b>0</b> unread messages</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="tabs-animated-shadow tabs-animated nav nav-justified tabs-shadow-bordered p-3">
+                                                <li class="nav-item">
+                                                    <a role="tab" class="nav-link active" data-toggle="tab" href="#tab-messages-header1">
+                                                        <span>Notes</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a role="tab" class="nav-link" data-toggle="tab" href="#tab-events-header1">
+                                                        <span>Equipment</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a role="tab" class="nav-link" data-toggle="tab" href="#tab-errors-header1">
+                                                        <span>Orders</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab-messages-header1" role="tabpanel">
+                                                    <div class="scroll-area-sm">
+                                                        <div class="scrollbar-container">
+                                                            <div class="p-3">
+                                                                <div class="notifications-box">
+                                                                    <div class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--one-column">
+                                                                        <div class="vertical-timeline-item dot-danger vertical-timeline-element">
+                                                                            <div><span class="vertical-timeline-element-icon bounce-in"></span>
+                                                                                <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4><span class="vertical-timeline-element-date"></span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab-events-header1" role="tabpanel">
+                                                    <div class="scroll-area-sm">
+                                                        <div class="scrollbar-container">
+                                                            <div class="p-3">
+                                                                <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                                                                    <div class="vertical-timeline-item vertical-timeline-element">
+                                                                        <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-success"> </i></span>
+                                                                            <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4>
+                                                                                <p>Lorem ipsum dolor sic amet, today at <a href="javascript:void(0);">12:00 PM</a></p><span class="vertical-timeline-element-date"></span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab-errors-header1" role="tabpanel">
+                                                    <div class="scroll-area-sm">
+                                                        <div class="scrollbar-container">
+                                                            <div class="no-results pt-3 pb-0">
+                                                                <div class="swal2-icon swal2-success swal2-animate-success-icon">
+                                                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                                                                    <span class="swal2-success-line-tip"></span>
+                                                                    <span class="swal2-success-line-long"></span>
+                                                                    <div class="swal2-success-ring"></div>
+                                                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                                                                </div>
+                                                                <div class="results-subtitle">All in Order!</div>
+                                                                <div class="results-title">There are no orders errors!</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item-divider nav-item"></li>
+                                                <li class="nav-item-btn text-center nav-item">
+                                                    <button class="btn-shadow btn-wide btn-pill btn btn-focus btn-sm">View Latest Changes</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="dots-separator"></div>
+                                    <div class="dropdown">
+                                        <a class="dot-btn-wrapper" data-toggle="tooltip-light" data-placement="top" title="Check Routes">
+                                            <i class="dot-btn-icon lnr-earth icon-gradient bg-happy-itmeo">
+                                            </i>
+                                        </a>
+                                        
+                                    </div>
+                                    <div class="dots-separator"></div>
+                                    <div class="dropdown">
+                                        <a class="dot-btn-wrapper dd-chart-btn-2" data-toggle="tooltip-light" data-placement="top" title="Check charts">
+                                            <i class="dot-btn-icon lnr-pie-chart icon-gradient bg-love-kiss"></i>
+                                           
+                                        </a>
+                                        
+                                    </div>
+                
+                                </div>
+                            </div>
+                            <div class="app-footer-right">
+                                <ul class="header-megamenu nav">
+                                    <li class="nav-item">
+                                        <a data-placement="top" rel="popover-focus" data-offset="300" data-toggle="popover-custom" class="nav-link">
+                                            Sumary Menu
+                                            <i class="fa fa-angle-up ml-2 opacity-8"></i>
+                                        </a>
+                                        <div class="rm-max-width rm-pointers">
+                                            <div class="d-none popover-custom-content">
+                                                <div class="dropdown-mega-menu dropdown-mega-menu-sm">
+                                                    <div class="grid-menu grid-menu-2col">
+                                                        <div class="no-gutters row">
+                                                            <div class="col-sm-6 col-xl-6">
+                                                                <ul class="nav flex-column">
+                                                                    <li class="nav-item-header nav-item">Overview</li>
+                                                                    <li class="nav-item"><a class="nav-link"><i class="nav-link-icon lnr-inbox"> </i><span>Orders</span></a></li>
+                                                                    <li class="nav-item"><a class="nav-link"><i class="nav-link-icon lnr-book"> </i><span>Equipment</span>
+                                                                        <div class="ml-auto badge badge-pill badge-danger">0</div>
+                                                                    </a></li>
+                                                                    <li class="nav-item"><a class="nav-link"><i class="nav-link-icon lnr-picture"> </i><span>Notes</span></a></li>
+                                                                    <li class="nav-item"><a disabled="" class="nav-link disabled"><i class="nav-link-icon lnr-file-empty"> </i><span>Dashboards</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-sm-6 col-xl-6">
+                                                                <ul class="nav flex-column">
+                                                                    <li class="nav-item-header nav-item">Services &amp; Works</li>
+                                                                    <li class="nav-item"><a class="nav-link">Check all Services</a></li>
+                                                                    <li class="nav-item"><a class="nav-link">Check all Orders Services</a></li>
+                                                                    <li class="nav-item"><a class="nav-link">Services Today
+                                                                        <div class="ml-auto badge badge-warning">0</div>
+                                                                    </a></li>
+                                                                    <li class="nav-item"><a class="nav-link">Work assing</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-placement="top" rel="popover-focus" data-offset="300" data-toggle="popover-custom" class="nav-link">
+                                            Report Menu
+                                            
+                                            <i class="fa fa-angle-up ml-2 opacity-8"></i>
+                                        </a>
+                                        <div class="rm-max-width rm-pointers">
+                                            <div class="d-none popover-custom-content">
+                                                <div class="dropdown-menu-header">
+                                                    <div class="dropdown-menu-header-inner bg-tempting-azure">
+                                                        <div class="menu-header-image opacity-1" style="background-image: url('../assets/images/dropdown-header/city5.jpg');"></div>
+                                                        <div class="menu-header-content text-dark"><h5 class="menu-header-title">Report Summary</h5><h6 class="menu-header-subtitle">Check all of works</h6></div>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-menu grid-menu-2col">
+                                                    <div class="no-gutters row">
+                                                        <div class="col-sm-6">
+                                                            <button class="btn-icon-vertical btn-transition-text btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-dark"><i class="lnr-apartment text-dark opacity-7 btn-icon-wrapper mb-2"> </i>Complete Works
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <button class="btn-icon-vertical btn-transition-text btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger"><i class="lnr-construction text-danger opacity-7 btn-icon-wrapper mb-2"> </i>Reports
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <button class="btn-icon-vertical btn-transition-text btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-success"><i class="lnr-bus text-success opacity-7 btn-icon-wrapper mb-2"> </i>Activity
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <button class="btn-icon-vertical btn-transition-text btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-focus"><i class="lnr-database opacity-7 btn-icon-wrapper mb-2"> </i>Summary of all
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-divider nav-item"></li>
+                                                    <li class="nav-item-btn clearfix nav-item">
+                                                        <div class="float-left">
+                                                            <button class="btn btn-link btn-sm">Check reports</button>
+                                                        </div>
+                                                        <div class="float-right">
+                                                            <button class="btn-shadow btn btn-info btn-sm">See all</button>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>    </div>
     </div>
-    <!-- End of Content Wrapper -->            
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
-        </div>
-      </div>
+</div>
+<!--DRAWER START-->
+<div class="app-drawer-wrapper">
+    <div class="drawer-nav-btn">
+        <button type="button" class="hamburger hamburger--elastic is-active">
+            <span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
     </div>
-  </div>
+    <div class="drawer-content-wrapper">
+        <div class="scrollbar-container">
+            <h3 class="drawer-heading">Works Status</h3>
+            <div class="drawer-section">
+                <div class="row">
+                    <div class="col">
+                        <div class="progress-box"><h4>Work 1</h4>
+                            <div class="circle-progress circle-progress-gradient-xl mx-auto">
+                                <small></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="progress-box"><h4>Work 2</h4>
+                            <div class="circle-progress circle-progress-success-xl mx-auto">
+                                <small></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="progress-box"><h4>Work 3</h4>
+                            <div class="circle-progress circle-progress-danger-xl mx-auto">
+                                <small></small>
+                            </div>
+                        </div>
+                    </div>
 
-  
-  <!-- Custom scripts for all pages-->
-  <script src="{% static 'administration/js/sb-admin-2.min.js' %}"></script>
+                </div>
+                <div class="divider"></div>
+                <div class="mt-3"><h5 class="text-center card-title">Statistics</h5>
+                    <div id="sparkline-carousel-3"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="widget-chart p-0">
+                                <div class="widget-chart-content">
+                                    <div class="widget-numbers text-warning fsize-3">0</div>
+                                    <div class="widget-subheading pt-1">Services</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="widget-chart p-0">
+                                <div class="widget-chart-content">
+                                    <div class="widget-numbers text-danger fsize-3">0</div>
+                                    <div class="widget-subheading pt-1">Orders</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="widget-chart p-0">
+                                <div class="widget-chart-content">
+                                    <div class="widget-numbers text-success fsize-3">0</div>
+                                    <div class="widget-subheading pt-1">Works</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="text-center mt-2 d-block">
+                        <button class="mr-2 border-0 btn-transition btn btn-outline-danger">Check Orders</button>
+                        <button class="border-0 btn-transition btn btn-outline-success">Check Works</button>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="drawer-heading">Tasks in Progress</h3>
+            <div class="drawer-section p-0">
+                <div class="todo-box">
+                    <ul class="todo-list-wrapper list-group list-group-flush">
+                        
+                        
+                        
+                        <li class="list-group-item">
+                            <div class="todo-indicator bg-info"></div>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left mr-2">
+                                        <div class="custom-checkbox custom-control">
+                                            <input type="checkbox" id="exampleCustomCheckbox2444" class="custom-control-input">
+                                            <label class="custom-control-label" for="exampleCustomCheckbox2444">&nbsp;</label></div>
+                                    </div>
+                                    <div class="widget-content-left mr-3">
+                                        <div class="widget-content-left"><img width="42" class="rounded" src="../assets/images/avatars/1.jpg" alt=""/></div>
+                                    </div>
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Go grocery shopping</div>
+                                        <div class="widget-subheading">A short description ...</div>
+                                    </div>
+                                    <div class="widget-content-right widget-content-actions">
+                                        <button class="border-0 btn-transition btn btn-sm btn-outline-success">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                        <button class="border-0 btn-transition btn btn-sm btn-outline-danger">
+                                            <i class="fa fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <h3 class="drawer-heading">Notifications</h3>
+            <div class="drawer-section">
+                <div class="notifications-box">
+                    <div class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--one-column">
+                        <div class="vertical-timeline-item dot-danger vertical-timeline-element">
+                            <div><span class="vertical-timeline-element-icon bounce-in"></span>
+                                <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4><span class="vertical-timeline-element-date"></span></div>
+                            </div>
+                        </div>
+                        <div class="vertical-timeline-item dot-warning vertical-timeline-element">
+                            <div><span class="vertical-timeline-element-icon bounce-in"></span>
+                                <div class="vertical-timeline-element-content bounce-in"><p>Yet another one, at <span class="text-success">15:00 PM</span></p><span class="vertical-timeline-element-date"></span></div>
+                            </div>
+                        </div>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="app-drawer-overlay d-none animated fadeIn"></div><!--DRAWER END-->
+ <div class="body-block-example-1 d-none">
+                    <div class="loader bg-transparent no-shadow p-0">
+                        <div class="ball-grid-pulse">
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                            <div class="bg-white"></div>
+                        </div>
+                    </div>
+                </div>
+<!--SCRIPTS INCLUDES-->
+
+<!--CORE-->
+
+<script type="text/javascript">
+    $('.close-sidebar-btn').click(function () {
+
+        var classToSwitch = $(this).attr('data-class');
+        var containerElement = '.app-container';
+        $(containerElement).toggleClass(classToSwitch);
+
+        var closeBtn = $(this);
+
+        if (closeBtn.hasClass('is-active')) {
+            closeBtn.removeClass('is-active');
+        } else {
+            closeBtn.addClass('is-active');
+        }
+    });
+</script>
 
 
-  
 
 
+<!--COMPONENTS-->
+
+<!--BlockUI -->
+<script src="{% static 'administration/assets/js/vendors/blockui.js' %}"></script>
+<script src="{% static 'administration/assets/js/scripts-init/blockui.js' %}"></script>
+
+<!--Circle Progress -->
+<script src="{% static 'administration/assets/js/vendors/circle-progress.js' %}"></script>
+<script src="{% static 'administration/assets/js/scripts-init/circle-progress.js' %}"></script>
+
+<!--Guided Tours -->
+<script src="{% static 'administration/assets/js/vendors/guided-tours.js' %}"></script>
+<script src="{% static 'administration/assets/js/scripts-init/guided-tours.js' %}"></script>
+
+<!--Perfect Scrollbar -->
+<script src="{% static 'administration/assets/js/vendors/scrollbar.js' %}"></script>
+<script src="{% static 'administration/assets/js/scripts-init/scrollbar.js' %}"></script>
+
+<!--Toastr-->
+<script src="{% static 'administration/assets/js/toastr.min.js' %}"></script>
+
+
+<!--CHARTS-->
+
+<script type="text/javascript">
+
+ 
+var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
+
+var dat = {
+    chart: {
+        type: 'area',
+        height: 120,
+        sparkline: {
+            enabled: true
+        },
+    },
+    tooltip: {
+        enabled: false,
+    },
+    colors: ['#f7b924'],
+    stroke: {
+        width: 3,
+        curve: 'smooth'
+    },
+
+    markers: {
+        size: 0
+    },
+    series: [{
+        data: [20,24,5,67,50,67,88,99,88,23],
+    }],
+    yaxis: {
+        min: 0
+    },
+};
+
+
+$( document ).ready(function() {
+ 
+
+$('.dd-chart-btn').one('click', function () {
+
+        setTimeout(function () {
+            if (document.getElementById('dashboard-sparkline-carousel-3-pop')) {
+                new ApexCharts(document.querySelector("#dashboard-sparkline-carousel-3-pop"), dat).render();
+            }
+        }, 500);
+
+    });
+});
+
+
+
+</script>
+<script type="text/javascript">
+      window.onload = function() {
+         $.blockUI.defaults = {
+        timeout: 500,
+        fadeIn: 200,
+        fadeOut: 400,
+        };
+        $.blockUI({message: $('.body-block-example-1')});
+    };
+
+    $('.show-toastr-example').click(function(){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr["info"]("You don't have any new items in your calendar today!", "Calendar Today");
+    });
+
+
+</script>
 </body>
-
 </html>
+
+

@@ -2,7 +2,31 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'administration/multi/css/bootstrap-select.css' %}">
-  
+<link rel="stylesheet" href="{% static 'administration/notify/dist/css/Lobibox.min.css' %}"/>
+
+<script type="text/javascript">
+    window.onload = function() {
+    {% if mensajes %}
+        Lobibox.notify('success', {
+                    showClass: 'zoomInUp',
+                    hideClass: 'zoomOutDown',
+                    delay: 15000,
+                    msg: '{{mensajes}}'
+                });     
+
+     {% endif %}
+    {% if errores %}
+    Lobibox.notify('error', {
+                    width: $(window).width(),
+                    showClass: 'zoomInUp',
+                    hideClass: 'zoomOutDown',
+                    delay: 15000,
+                    msg: '{{errores}}'
+                });
+    {% endif %}
+    
+};
+</script>
 
 
 
@@ -112,3 +136,7 @@ createOptions(4);
 </script>
 
 {% endblock %}
+
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'administration/notify/dist/js/Lobibox.min.js' %}"></script>

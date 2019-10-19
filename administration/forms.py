@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order,Type,Service,Job,Profile,Assign
+from .models import Order,Type,Service,Profile,Assign
 
 class OrderForm(forms.ModelForm):
 
@@ -37,3 +37,19 @@ class ServiceForm(forms.ModelForm):
             'Note': forms.TextInput(attrs={'class': 'form-control','placeholder': 'write a note'}),
            
         }       
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ('Names', 'Last_names', 'IdPersonal', 'Phone', 'Address', 'Start_Work','Note')
+        widgets = {
+            'Names': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Put the name'}),
+            'Last_names': forms.TextInput(attrs={'class': 'form-control','placeholder': 'put last names here'}),
+            'IdPersonal': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Put the id'}),
+            'Phone': forms.TextInput(attrs={'class': 'form-control','placeholder': 'put phone here'}),
+            'Address': forms.TextInput(attrs={'class': 'form-control','placeholder': 'put the Address'}),
+            'Start_Work': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Put the date of start work','required':'readonly'}),
+            'Note': forms.TextInput(attrs={'class': 'form-control','placeholder': 'write a note'}),
+           
+        } 

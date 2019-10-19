@@ -3,33 +3,6 @@
 {% load static %}
 
 
-  <!-- Custom styles for this page -->
-  <link href="{% static 'administration/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
- <link rel="stylesheet" href="{% static 'administration/notify/dist/css/Lobibox.min.css' %}"/>
-
-<script type="text/javascript">
-    window.onload = function() {
-    {% if mensajes %}
-        Lobibox.notify('success', {
-                    showClass: 'rollIn',
-                    hideClass: 'rollOut',
-                    msg: '{{mensajes}}'
-                });     
-
-     {% endif %}
-    {% if errores %}
-    Lobibox.notify('error', {
-                    width: $(window).width(),
-                    showClass: 'zoomInUp',
-                    hideClass: 'zoomOutDown',
-                    delay: 15000,
-                    msg: '{{errores}}'
-                });
-    {% endif %}
-    
-};
-</script>
-
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -41,10 +14,7 @@
 
 
           <!-- Page Heading -->
-          <div class="jumbotron">
-         <center><h1 >Orders</h1>
-          <p class="mb-4">List of orders, States: Check is for the orders that are create from users, active is order that are create from the admin</p></center> 
-</div>
+          
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -201,17 +171,4 @@
         </div>
         <!-- /.container-fluid -->
 
-<!-- Bootstrap core JavaScript-->
-  <script src="{% static 'administration/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'administration/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  
-<!-- Page level plugins -->
-  <script src="{% static 'administration/vendor/datatables/jquery.dataTables.min.js' %}"></script>
-  <script src="{% static 'administration/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{% static 'administration/js/demo/datatables-demo.js' %}"></script>
-  
-
-  <script src="{% static 'administration/notify/dist/js/Lobibox.min.js' %}"></script>
 {% endblock %}

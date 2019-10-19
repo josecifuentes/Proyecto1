@@ -2,7 +2,30 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'administration/multi/css/bootstrap-select.css' %}">
-  
+<link rel="stylesheet" href="{% static 'administration/notify/dist/css/Lobibox.min.css' %}"/>
+
+<script type="text/javascript">
+    window.onload = function() {
+    {% if mensajes %}
+        Lobibox.notify('success', {
+                    showClass: 'zoomInUp',
+                    hideClass: 'zoomOutDown',
+                    delay: 15000,
+                    msg: '{{mensajes}}'
+                });     
+
+     {% endif %}
+    {% if errores %}
+    Lobibox.notify('error', {
+                    showClass: 'zoomInUp',
+                    hideClass: 'zoomOutDown',
+                    delay: 15000,
+                    msg: '{{errores}}'
+                });
+    {% endif %}
+    
+};
+</script>
 
 
 
@@ -41,6 +64,21 @@
       </div>
 
     </div>
+
+ <div class="form-group">
+         <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <label class="col-sm-2 col-form-label"><i class="fa fa-address-book"></i> Color</label>
+      
+      <div class="col-sm-2">
+        <input type="color" name="favcolor" class="form-control" value="#ff0000">
+      </div>
+      </div>
+
+    </div>
+
+
         <center>
         <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> New type</button>
         </center> 
@@ -119,6 +157,7 @@
 
 <script src="{% static 'administration/multi/js/bootstrap-select.js' %}"></script>
 
+  <script src="{% static 'administration/notify/dist/js/Lobibox.min.js' %}"></script>
 <script>
 function createOptions(number) {
   var options = [], _options;

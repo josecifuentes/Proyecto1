@@ -3,121 +3,196 @@
 {% load static %}
 
 
-<link rel="stylesheet" href="{% static 'administration/notify/dist/css/Lobibox.min.css' %}"/>
-
-<script type="text/javascript">
-    window.onload = function() {
-    {% if mensajes %}
-        Lobibox.notify('success', {
-                    idth: $(window).width(),
-                    showClass: 'zoomInUp',
-                    hideClass: 'zoomOutDown',
-                    delay: 15000,
-                    msg: '{{mensajes}}'
-                });     
-
-     {% endif %}
-    {% if errores %}
-    Lobibox.notify('error', {
-                    width: $(window).width(),
-                    showClass: 'zoomInUp',
-                    hideClass: 'zoomOutDown',
-                    delay: 15000,
-                    msg: '{{errores}}'
-                });
-    {% endif %}
-    
-};
-</script>
 
 
-<div class="jumbotron">
-  <center><h1>Add new order</h1></center>
-
-</div>
-<div class="container">
-
-
-
+<div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <h5 class="card-title">Order Form</h5>
 
      <center>          
-<div class="row" >
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10">
- 
- <form method="POST" class="post-form" style="color: rgb(133, 135, 150); background: rgb(234, 236, 244  );">
+
+ <form method="POST" class="col-md-10 mx-auto" id="signupForm">
 
     {% csrf_token %}
      {% for non_field_error in form.non_field.errors %}
     <help class="is-danger">{{ non_field_error}}</help>
      {% endfor %} 
-      <div class="form-group row">
+<div class="row" >
+<div class="col-md-6">
+   <div class="position-relative form-group">
+  <label for="Names" class="">Names:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-user"></i></span></div>
+     {{form.Names}}</div>
+    
+        </div>
+</div>
+      
+        
+ <div class="col-md-6">  
+ <div class="position-relative form-group">
+  <label for="Names" class="">Last Names:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-user"></i></span></div>
+     {{form.Last_names}}</div>
+    
+        </div>  
+  
+</div>
 
-    <label class="col-sm-2 col-form-label"><i class="fa fa-address-book"></i> Names</label>
-    <div class="col-sm-10">
-      {{form.Names}}
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><i class="fa fa-address-card"></i> Last Names</label>
-    <div class="col-sm-10">
-      {{form.Last_names}}
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><i class="fa fa-mobile"></i> Phone</label>
-    <div class="col-sm-10">
-      {{form.Phone}}
-    </div>
-  </div>
-   <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><i class="fa fa-address-card"></i> Address</label>
-    <div class="col-sm-10">
-      {{form.Address}}
-    </div>
-  </div>
-   <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><i class="fa fa-certificate"></i> Reference</label>
-    <div class="col-sm-10">
-      {{form.Reference}}
-    </div>
-  </div>
-   <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><i class="fa fa-bookmark"></i> Description</label>
-    <div class="col-sm-10">
-      {{form.Description}}
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><i class="fa fa-book"></i> Note</label>
-    <div class="col-sm-10">
-      {{form.Note}}
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <center>
-      <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> {{button}}</button>
-      </center>
+</div>
+<div class="row" >
+<div class="col-md-12">
+   <div class="position-relative form-group">
+  <label for="Names" class="">Phone:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-phone-square"></i></span></div>
+      {{form.Phone}}</div>
+    
+        </div>
+</div>
+
+</div>
+  <div class="row" >
+<div class="col-md-6">
+   <div class="position-relative form-group">
+  <label for="Names" class="">Address:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-address-card"></i></span></div>
+     {{form.Address}}</div>
+    
+        </div>
+</div>
+      
+        
+ <div class="col-md-6">  
+ <div class="position-relative form-group">
+  <label for="Names" class="">Reference:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-clone"></i></span></div>
+      {{form.Reference}}</div>
+    
+        </div>  
+  
+</div>
+
+</div>
+  
+  <div class="row" >
+<div class="col-md-6">
+   <div class="position-relative form-group">
+  <label for="Names" class="">Description:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-tags"></i></span></div>
+     {{form.Description}}</div>
+    
+        </div>
+</div>
+      
+        
+ <div class="col-md-6">  
+ <div class="position-relative form-group">
+  <label for="Names" class="">Note:</label>
+    <div class="input-group">
+        <div class="input-group-prepend input-group-lg"><span class="input-group-text"><i class="fas fa-sticky-note"></i></span></div>
+      {{form.Note}}</div>
+    
+        </div>  
+  
+</div>
+
+</div>
+ <br>
+  <div class="row" >
+    <div class="col-md-3"></div>
+<div class="col-md-6">
+      
+        <button type="submit"class="mb-2 mr-2 btn btn-outline-primary btn-block"><i class="fa fa-check"></i>  -{{button}}
+                                            </button>
+      
+     
     </div>
   </div>
 </form>
 
-  </div>  
+  
 </div>
+
 </center> 
 </div>
 
 
-<!-- Bootstrap core JavaScript-->
-  <script src="{% static 'administration/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'administration/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  
-<!-- Page level plugins -->
-  <script src="{% static 'administration/vendor/datatables/jquery.dataTables.min.js' %}"></script>
-  <script src="{% static 'administration/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="{% static 'administration/js/demo/datatables-demo.js' %}"></script>
+<!--Form Validation-->
 
-  <script src="{% static 'administration/notify/dist/js/Lobibox.min.js' %}"></script>
+<script src="{% static 'administration/assets/js/vendors/form-components/form-validation.js' %}"></script>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+
+    $( "#signupForm" ).validate( {
+        rules: {
+            Names: "required",
+            Last_names: "required",
+            Phone: {
+                required: true,
+                minlength: 8
+            },
+            
+            Address: {
+                required: true,
+                minlength: 5,
+            },
+            Description: {
+                required: true,
+                
+            },
+            Reference: {
+                required: false,
+                
+            },
+            Note: {
+                required: false,
+                
+            },
+        },
+        messages: {
+            Names: "Please enter the client names",
+            Last_names: "Please enter the client last names",
+            Phone: {
+                required: "Please enter a client phone",
+                minlength: "Your client phone must consist of at least 8 characters"
+            },
+            Address: {
+                required: "Please provide a Address",
+               
+            },
+            Description: {
+                required: "Please describe a little the order",
+               
+            },
+            
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `invalid-feedback` class to the error element
+            error.addClass( "invalid-feedback" );
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.next( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+        }
+    } );
+
+});
+
+
+</script>
 {% endblock %}
