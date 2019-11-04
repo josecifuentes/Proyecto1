@@ -46,6 +46,8 @@ def dashboard(request):
 		m3 = {}
 		m1 = int(2 - x)
 		m2 = month+m1
+		if(m2>12):
+			m2=m2-12
 		m3["month"] = calendar.month_name[m2]
 		months.append(m3)
 	Services = []
